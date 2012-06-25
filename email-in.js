@@ -30,7 +30,10 @@ Author: jan@apache.org
 TODO:
  - code formatting
  - make doc-transformation a separate function
+  - make doc hoodie-capable
  - print useful output when run from the commandline
+ - tests
+ - more docs
 */
 var http = require('http');
 var url = require("url");
