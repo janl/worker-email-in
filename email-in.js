@@ -53,8 +53,6 @@ var config = {
 var mailRaw = '';
 
 http.createServer(function (req, res) {
-    // res.writeHead(200, {'Content-Type': 'text/plain'});
-    // res.end('Hello Worker');
 
     req.on('data', function(chunk) {
         mailRaw += chunk;
