@@ -54,7 +54,7 @@ http.createServer(function (req, res) {
         request({
           uri: uri,
           method: "POST",
-          json: doc
+          json: mailJSON
         }, function(error, response) {
           if(error) {
             console.warn("Set Doc status fail: " + error);
