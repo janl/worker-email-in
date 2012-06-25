@@ -30,6 +30,7 @@ http.createServer(function (req, res) {
         console.log(mailRaw);
         if(!mailRaw) { 
             console.log("no mailRaw, skip");
+            res.end();
             return;
         }
         var mailJSON = JSON.parse(mailRaw);
