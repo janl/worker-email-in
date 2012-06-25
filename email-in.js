@@ -56,7 +56,7 @@ http.createServer(function (req, res) {
         console.log("mailJSON is good");
 
         // Insert new document.
-        var db = mailJSON.MailboxHash; // hoodie+hash@inbound.postmarkapp.com
+        var db = mailJSON.MailboxHash.strToLower(); // hoodie+hash@inbound.postmarkapp.com
         var uri = url.parse(config.server);
         uri.path = "/" + db + "/";
         uri.auth = config.admin.user + ":" + config.admin.pass;
