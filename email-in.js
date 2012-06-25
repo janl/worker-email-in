@@ -1,3 +1,37 @@
+/*
+
+This email-in module is a post-receive-hook for the postmarkapp.com
+email service. It is based on https://gist.github.com/1647808 by
+Mark Headd. Thanks Mark!
+
+The setup is easy, define these three environment variables:
+
+    HOODIE_SERVER
+    HOODIE_ADMIN_USER
+    HOODIE_ADMIN_PASS
+
+For example:
+
+    HOODIE_SERVER=http://my.irisouch.com
+    HOODIE_ADMIN_USER=username
+    HOODIE_ADMIN_PASS=password
+
+If you are using Heroku to run this worker, run:
+
+    heroku config:add \
+      HOODIE_SERVER=http://my.irisouch.com \
+      HOODIE_ADMIN_USER=username \
+      HOODIE_ADMIN_PASS=password
+
+This module relies on the `request` module, but it is included, yay.
+
+Author: jan@apache.org
+
+TODO:
+ - code formatting
+ - make doc-transformation a separate function
+ - print useful output when run from the commandline
+*/
 var http = require('http');
 var url = require("url");
 var request = require("request");
@@ -12,7 +46,6 @@ var config = {
     }
 }
 
-// thx https://gist.github.com/1647808
 // Variable to hold chunked data from Postmark.
 var mailRaw = '';
 
