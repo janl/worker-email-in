@@ -28,7 +28,10 @@ http.createServer(function (req, res) {
 
         // Get the JSON payload from Postmark.
         console.log(mailRaw);
-        if(!mailRaw) { return; }
+        if(!mailRaw) { 
+            console.log("no mailRaw, skip");
+            return;
+        }
         var mailJSON = JSON.parse(mailRaw);
 
         // Transform attachments (fairly cheesy, but seems to work).
@@ -49,6 +52,8 @@ http.createServer(function (req, res) {
             delete mailJSON.Attachments;
         }
 
+        console.log("mailJSON is good");
+
         // Insert new document.
         var db = mailJSON.MailboxHash; // hoodie+hash@inbound.postmarkapp.com
         var uri = url.parse(config.server);
@@ -60,9 +65,9 @@ http.createServer(function (req, res) {
           json: mailJSON
         }, function(error, response) {
           if(error) {
-            console.warn("Set Doc status fail: " + error);
+                console.log("Set Doc status fail: " + error);
           }
-          // console.warn("Save doc response: %j", response.body);
+              console.log("Save doc response: %j", response.body);
         });
 
         // Reset our holder variable.
@@ -70,6 +75,7 @@ http.createServer(function (req, res) {
 
         // Send an empty response.
         res.end();
+        console.log("req-done yay");
     });
 
 }).listen(port, '0.0.0.0');
