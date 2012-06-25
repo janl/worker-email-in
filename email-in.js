@@ -48,9 +48,9 @@ http.createServer(function (req, res) {
 
         // Insert new document.
         var db = mailJSON.MailboxHash; // hoodie+hash@inbound.postmarkapp.com
-        var uri = url.parse(this._config.server);
+        var uri = url.parse(config.server);
         uri.path = "/" + db + "/";
-        uri.auth = this._config.admin.user + ":" + this._config.admin.pass;
+        uri.auth = config.admin.user + ":" + config.admin.pass;
         request({
           uri: uri,
           method: "POST",
