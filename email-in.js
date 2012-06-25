@@ -27,6 +27,8 @@ http.createServer(function (req, res) {
     req.on('end', function() {
 
         // Get the JSON payload from Postmark.
+        console.log(mailRaw);
+        if(!mailRaw) { return; }
         var mailJSON = JSON.parse(mailRaw);
 
         // Transform attachments (fairly cheesy, but seems to work).
