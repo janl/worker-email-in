@@ -68,7 +68,7 @@ http.createServer(function (req, res) {
           if(error) {
                 console.log("Set Doc status fail: " + error);
           }
-              console.log("Save doc response: %j", response.body);
+              console.log("Save doc response: %j", response);
         });
 
         // Reset our holder variable.
