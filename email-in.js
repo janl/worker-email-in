@@ -32,13 +32,15 @@ TODO:
  - make doc-transformation a separate function
   - make doc hoodie-capable
  - print useful output when run from the commandline
- - tests
+ - add user-email-hashing config
  - more docs
 */
 
 var http = require('http');
 var url = require("url");
 var request = require("request");
+
+module.exports = WorkerEmailInPostmark;
 
 function WorkerEmailInPostmark(config) {
     this._config = config;
@@ -78,7 +80,7 @@ function WorkerEmailInPostmark(config) {
 
     }).listen(port, '0.0.0.0');
 
-    console.log('Server running at http://0.0.0.0:' + port);
+    //console.log('Server running at http://0.0.0.0:' + port);
 
 }
 
