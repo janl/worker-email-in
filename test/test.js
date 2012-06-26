@@ -27,9 +27,12 @@ var fixtures = {
 describe("WorkerEmailInPostmark", function() {
 
     var worker;
-    // beforeEach(function() {
-        // TODO: add worker.stop() in afterEach()
+    // beforeEach(function(done) {
+        // TODO: start/stop module between tests.
        worker = new WorkerEmailInPostmark(fixtures.config);
+    // });
+    // afterEach(function(done) {
+    //     worker.stop(done);
     // });
 
     describe("#_postMarkToHoodie()", function() {

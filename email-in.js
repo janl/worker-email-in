@@ -48,7 +48,7 @@ function WorkerEmailInPostmark(config) {
     // Variable to hold chunked data from Postmark.
     var mailRaw = '';
 
-    http.createServer(function (req, res) {
+    this._server = http.createServer(function (req, res) {
 
         req.on('data', function(chunk) {
             mailRaw += chunk;
@@ -82,6 +82,13 @@ function WorkerEmailInPostmark(config) {
 
     //console.log('Server running at http://0.0.0.0:' + port);
 
+}
+
+WorkerEmailInPostmark.prototype.stop = function()
+{
+    this._server.close(function() {
+        console.debug("Server Stopped");
+    });
 }
 
 WorkerEmailInPostmark.prototype._parseDbName = function(doc)
