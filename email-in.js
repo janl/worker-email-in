@@ -42,7 +42,7 @@ var request = require("request");
 
 module.exports = WorkerEmailInPostmark;
 
-function WorkerEmailInPostmark(config) {
+function WorkerEmailInPostmark(config, cb) {
     this._config = config;
 
     // Variable to hold chunked data from Postmark.
@@ -79,8 +79,7 @@ function WorkerEmailInPostmark(config) {
             console.log("req-done yay");
         });
 
-    }).listen(port, "0.0.0.0");
-
+    }).listen(port, "0.0.0.0", null, cb);
 //    console.log('Server running at http://0.0.0.0:' + port);
 
 }
