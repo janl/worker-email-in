@@ -36,7 +36,7 @@ TODO:
  - add debug mode
 */
 
-var http = require('http');
+var http = require("http");
 var url = require("url");
 var request = require("request");
 
@@ -46,15 +46,15 @@ function WorkerEmailInPostmark(config) {
     this._config = config;
 
     // Variable to hold chunked data from Postmark.
-    var mailRaw = '';
+    var mailRaw = "";
 
     this._server = http.createServer(function (req, res) {
 
-        req.on('data', function(chunk) {
+        req.on("data", function(chunk) {
             mailRaw += chunk;
         });
 
-        req.on('end', function() {
+        req.on("end", function() {
 
             // Get the JSON payload from Postmark.
             if(!mailRaw) { 
@@ -71,23 +71,23 @@ function WorkerEmailInPostmark(config) {
             this._doSaveDoc(db, mailJSON);
 
             // Reset our holder variable.
-            mailRaw = '';
+            mailRaw = "";
 
             // Send an empty response.
             res.end();
             console.log("req-done yay");
         });
 
-    }).listen(port, '0.0.0.0');
+    }).listen(port, "0.0.0.0");
 
-    //console.log('Server running at http://0.0.0.0:' + port);
+//    console.log('Server running at http://0.0.0.0:' + port);
 
 }
 
 WorkerEmailInPostmark.prototype.stop = function()
 {
     this._server.close(function() {
-        console.debug("Server Stopped");
+  //      console.log("Server Stopped");
     });
 }
 
