@@ -47,6 +47,7 @@ function WorkerEmailInPostmark(config) {
 
     // Variable to hold chunked data from Postmark.
     var mailRaw = "";
+    var me = this;
 
     this._server = http.createServer(function (req, res) {
 
@@ -63,12 +64,12 @@ function WorkerEmailInPostmark(config) {
                 return;
             }
 
-            var mailJSON = this._postMarkToHoodie(mailRaw);
+            var mailJSON = me._postMarkToHoodie(mailRaw);
 
             // hoodie+hash@inbound.postmarkapp.com
-            var db = this._parseDbName(mailJSON);
+            var db = me._parseDbName(mailJSON);
 
-            this._doSaveDoc(db, mailJSON);
+            me._doSaveDoc(db, mailJSON);
 
             // Reset our holder variable.
             mailRaw = "";
