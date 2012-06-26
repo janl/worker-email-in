@@ -48,6 +48,18 @@ describe("WorkerEmailInPostmark", function() {
             var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.equal("image/png", result._attachments["myimage.png"].content_type);            
         });
+        it("should convert the Name correctly", function() {
+            var result = worker._postMarkToHoodie(fixtures.email_json);
+            assert.notEqual(null, result._attachments["myimage.png"]);
+        });
+        it("should convert the other content-type correctly", function() {
+            var result = worker._postMarkToHoodie(fixtures.email_json);
+            assert.equal("application/msword", result._attachments["mypaper.doc"].content_type);
+        });
+        it("should convert the other Name correctly", function() {
+            var result = worker._postMarkToHoodie(fixtures.email_json);
+            assert.notEqual(null, result._attachments["mypaper.doc"]);
+        });
     });
 
     describe("#_parseDbName()", function() {
