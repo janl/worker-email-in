@@ -134,21 +134,13 @@ WorkerEmailInPostmark.prototype._postMarkToHoodie = function(mailRaw)
 {
     var mailJSON = JSON.parse(mailRaw);
 
-    // Transform attachments (fairly cheesy, but seems to work).
     if(mailJSON.Attachments.length) {
-        var couchAttachments = '{';
-        for(var i=0; i<mailJSON.Attachments.length; i++) {
-            couchAttachments += '"' + mailJSON.Attachments[i].Name + '": {';
-            couchAttachments += '"content_type":"' + mailJSON.Attachments[i].ContentType + '",';
-            couchAttachments += '"data":"' + mailJSON.Attachments[i].Content + '"';
-            couchAttachments += '},';
-        }
-        couchAttachments = couchAttachments.substring(0, (couchAttachments.length)-1);
-        couchAttachments += '}';
-        var _attachments = JSON.parse(couchAttachments);
-
-        // Replace old attachments property with new Couchified attachments.
-        mailJSON._attachments = _attachments;
+        mailJSON._attachments = {};
+        mailJSON.Attachments.forEach(function(attachment) {
+            mailJSON._attachments[attachment.Name] = {};
+            mailJSON._attachments[attachment.Name].content_type = attachment.ContentType;
+            mailJSON._attachments[attachment.Name].data = attachment.Content;
+        });
         delete mailJSON.Attachments;
     }
     return mailJSON;
