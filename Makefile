@@ -1,4 +1,4 @@
 test:
-	mocha --reporter list
+	mocha --reporter list test/test.js
 
 .PHONY: test
