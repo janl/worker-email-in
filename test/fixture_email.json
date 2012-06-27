@@ -26,7 +26,7 @@
   "Subject": "This is an inbound message",
   "MessageID": "22c74902-a0c1-4511-804f2-341342852c90",
   "Date": "Thu, 5 Apr 2012 16:59:01 +0200",
-  "MailboxHash": "ahoy",
+  "MailboxHash": "testdb",
   "TextBody": "[ASCII]",
   "HtmlBody": "[HTML(encoded)]",
   "Tag": "",
@@ -67,15 +67,15 @@
   "Attachments": [
     {
       "Name": "myimage.png",
-      "Content": "[BASE64-ENCODED CONTENT]",
+      "Content": "T2hhaQ==",
       "ContentType": "image/png",
-      "ContentLength": 4096
+      "ContentLength": 8
     },
     {
       "Name": "mypaper.doc",
-      "Content": "[BASE64-ENCODED CONTENT]",
+      "Content": "bXIgcG9waXN0ZXI=",
       "ContentType": "application/msword",
-      "ContentLength": 16384
+      "ContentLength": 16
     }
   ]
 }
