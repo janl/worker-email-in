@@ -39,6 +39,7 @@ TODO:
 var http = require("http");
 var url = require("url");
 var request = require("request");
+var uuid = require("uuid");
 
 module.exports = WorkerEmailInPostmark;
 
@@ -133,6 +134,10 @@ WorkerEmailInPostmark.prototype._doSaveDoc = function(db, doc)
 WorkerEmailInPostmark.prototype._postMarkToHoodie = function(mailRaw)
 {
     var mailJSON = JSON.parse(mailRaw);
+
+    mailJSON._id = "image/" + uuid.v4().replace(/-/, "");
+    mailJSON.name = mailJSON.Subject;
+    mailJSON.description = mailJSON.TextBody;
 
     if(mailJSON.Attachments && mailJSON.Attachments.length) {
         mailJSON._attachments = {};
