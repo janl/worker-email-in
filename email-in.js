@@ -76,7 +76,7 @@ function WorkerEmailInPostmark(config, cb) {
 
             // Send an empty response.
             res.end();
-            console.log("req-done yay");
+            // console.log("req-done yay");
         });
 
     }).listen(port, "0.0.0.0", null, cb);
