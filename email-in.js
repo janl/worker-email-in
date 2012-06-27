@@ -114,7 +114,9 @@ WorkerEmailInPostmark.prototype._doSaveDoc = function(db, doc)
     // Insert new document.
     var uri = url.parse(this._config.server);
     uri.path = "/" + db + "/";
-    uri.auth = this._config.admin.user + ":" + this._config.admin.pass;
+    if(this._config.admin) {
+        uri.auth = this._config.admin.user + ":" + this._config.admin.pass;
+    }
     request({
         uri: uri,
         method: "POST",
