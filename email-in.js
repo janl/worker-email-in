@@ -134,12 +134,13 @@ WorkerEmailInPostmark.prototype._postMarkToHoodie = function(mailRaw)
 {
     var mailJSON = JSON.parse(mailRaw);
 
-    if(mailJSON.Attachments.length) {
+    if(mailJSON.Attachments && mailJSON.Attachments.length) {
         mailJSON._attachments = {};
         mailJSON.Attachments.forEach(function(attachment) {
-            mailJSON._attachments[attachment.Name] = {};
-            mailJSON._attachments[attachment.Name].content_type = attachment.ContentType;
-            mailJSON._attachments[attachment.Name].data = attachment.Content;
+            mailJSON._attachments[attachment.Name] = {
+                content_type: attachment.ContentType,
+                data: attachment.Content
+            };
         });
         delete mailJSON.Attachments;
     }
