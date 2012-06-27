@@ -39,7 +39,7 @@ TODO:
 var http = require("http");
 var url = require("url");
 var request = require("request");
-var uuid = require("uuid");
+var uuid = require("node-uuid");
 
 module.exports = WorkerEmailInPostmark;
 
