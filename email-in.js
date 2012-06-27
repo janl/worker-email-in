@@ -84,11 +84,9 @@ function WorkerEmailInPostmark(config, cb) {
 
 }
 
-WorkerEmailInPostmark.prototype.stop = function()
+WorkerEmailInPostmark.prototype.stop = function(cb)
 {
-    this._server.close(function() {
-  //      console.log("Server Stopped");
-    });
+    this._server.close(cb);
 }
 
 WorkerEmailInPostmark.prototype._parseDbName = function(doc)
