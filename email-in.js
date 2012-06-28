@@ -138,6 +138,7 @@ WorkerEmailInPostmark.prototype._postMarkToHoodie = function(mailRaw)
     mailJSON._id = "image/" + uuid.v4().replace(/-/, "");
     mailJSON.name = mailJSON.Subject;
     mailJSON.description = mailJSON.TextBody;
+    mailJSON.type = "image";
 
     if(mailJSON.Attachments && mailJSON.Attachments.length) {
         mailJSON._attachments = {};
