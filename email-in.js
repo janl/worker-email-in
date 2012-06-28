@@ -36,6 +36,8 @@ TODO:
  - add debug mode
 */
 
+console.log('here I am!')
+
 var http = require("http");
 var url = require("url");
 var request = require("request");
