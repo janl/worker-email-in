@@ -143,6 +143,7 @@ WorkerEmailInPostmark.prototype._postMarkToHoodie = function(mailRaw)
     if(mailJSON.Attachments && mailJSON.Attachments.length) {
         mailJSON._attachments = {};
         mailJSON.Attachments.forEach(function(attachment) {
+            mailJSON.filename = attachment.Name;
             mailJSON._attachments[attachment.Name] = {
                 content_type: attachment.ContentType,
                 data: attachment.Content
