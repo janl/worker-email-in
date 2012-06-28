@@ -81,7 +81,7 @@ function WorkerEmailInPostmark(config, cb) {
         });
 
     }).listen(port, "0.0.0.0", null, cb);
-//    console.log('Server running at http://0.0.0.0:' + port);
+    console.log('Server running at http://0.0.0.0:' + port);
 
 }
 
