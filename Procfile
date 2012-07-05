@@ -1,1 +1,1 @@
-web: node email-in.js
+web: node index.js
