@@ -36,29 +36,34 @@ describe("WorkerEmailInPostmark", function() {
     // });
 
     describe("#_postMarkToHoodie()", function() {
+        var result;
+        beforeEach(function() {
+            result = worker._postMarkToHoodie(fixtures.email_json);
+        });
+
         it("should convert attachments to couch-attachments", function() {
-            var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.notEqual(null, result._attachments);
         });
         it("should delete the 'Attachments' member", function() {
-            var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.equal(null, result.Attachments);
         });
         it("should convert the content-type correctly", function() {
-            var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.equal("image/png", result._attachments["myimage.png"].content_type);            
         });
         it("should convert the Name correctly", function() {
-            var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.notEqual(null, result._attachments["myimage.png"]);
         });
         it("should convert the other content-type correctly", function() {
-            var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.equal("application/msword", result._attachments["mypaper.doc"].content_type);
         });
         it("should convert the other Name correctly", function() {
-            var result = worker._postMarkToHoodie(fixtures.email_json);
             assert.notEqual(null, result._attachments["mypaper.doc"]);
+        });
+        it("should set created_at to current datetime", function() {
+            assert.equal(+result.created_at, +(new Date))
+        });
+        it("should set updated_at to current datetime", function() {
+            assert.equal(+result.updated_at, +(new Date))
         });
     });
 
