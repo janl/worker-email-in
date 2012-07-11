@@ -1,5 +1,5 @@
 var assert = require("assert");
-var WorkerEmailInPostmark = require("../lib/email-in");
+var WorkerEmailInPostmark = require("../lib/email-in.js");
 
 var fixtures = {
     db_names: {

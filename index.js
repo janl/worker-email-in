@@ -28,9 +28,9 @@ Author: jan@apache.org
 */
 
 // setup
-var port = process.env["PORT"] || 8888;
 var config = {
     server: process.env.HOODIE_SERVER,
+    port: process.env["PORT"] || 8888,
     admin: {
         user: process.env.HOODIE_ADMIN_USER,
         pass: process.env.HOODIE_ADMIN_PASS
