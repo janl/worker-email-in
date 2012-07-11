@@ -60,10 +60,10 @@ describe("WorkerEmailInPostmark", function() {
             assert.notEqual(null, result._attachments["mypaper.doc"]);
         });
         it("should set created_at to current datetime", function() {
-            assert.equal(+result.created_at, +(new Date))
+            assert(+result.created_at <= +(new Date));
         });
         it("should set updated_at to current datetime", function() {
-            assert.equal(+result.updated_at, +(new Date))
+            assert(+result.updated_at <= +(new Date));
         });
     });
 
