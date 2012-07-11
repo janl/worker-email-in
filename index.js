@@ -27,6 +27,8 @@ This module relies on the `request` module, but it is included, yay.
 Author: jan@apache.org
 */
 
+var WorkerEmailInPostmark = require("./lib/email-in");
+
 // setup
 var config = {
     server: process.env.HOODIE_SERVER,
