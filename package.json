@@ -4,6 +4,10 @@
   "engines": {
     "node": "0.6.x"
   },
+  "dependencies": {
+    "request": "*",
+    "node-uuid": "*"
+  },
   "devDependencies": {
     "mocha": "*"
   }
